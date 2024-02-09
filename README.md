@@ -35,8 +35,7 @@
 <p align="center">
   <a href="#dart-about">About</a> &#xa0; | &#xa0; 
   <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
-  <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
-  <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
+  <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0
   <a href="#memo-license">License</a> &#xa0; | &#xa0;
   <a href="https://github.com/sbalbale" target="_blank">Author</a>
 </p>
@@ -45,7 +44,7 @@
 
 ## :dart: About ##
 
-This is all of my class work for Fundamentals of Computer Science 2 (CS2510) at Northeastern University
+This my class work for Fundamentals of Computer Science 2 (CS2510) at Northeastern University.
 
 ## :rocket: Technologies ##
 
@@ -54,10 +53,6 @@ The following tools were used in this project:
 - [Java](https://www.java.com/en/)
 - [Apache Maven](https://maven.apache.org/)
 - [InteliJ Idea](https://www.jetbrains.com/idea/)
-
-## :white_check_mark: Requirements ##
-
-Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
 
 ## :checkered_flag: Starting ##
 

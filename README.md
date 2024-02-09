@@ -44,7 +44,7 @@
 
 ## :dart: About ##
 
-This my class work for Fundamentals of Computer Science 2 (CS2510) at Northeastern University.
+This is my coursework for Fundamentals of Computer Science 2 (CS2510) at Northeastern University.
 
 ## :rocket: Technologies ##
 

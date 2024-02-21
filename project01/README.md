@@ -1,5 +1,8 @@
 # uk.ac.nulondon:project01
 
+## You can find the photos from the outputs and inputs in the project images folder
+
+
 Have you ever been unable to send an image because it was too large to export? In
 this assignment you will be reducing the size of colour images stored in PNG format.
 You will be implementing an adaptation of a compression technique called seam

@@ -12,7 +12,7 @@ public class ImageDemo {
     public static void main(String args[]) throws Exception {
 
         // Code to read image into an image buffer
-        File originalFile = new File("src/main/resources/dog.png");
+        File originalFile = new File("Us.png");
         BufferedImage oldImg = ImageIO.read(originalFile);
 
         // new file to store altered image

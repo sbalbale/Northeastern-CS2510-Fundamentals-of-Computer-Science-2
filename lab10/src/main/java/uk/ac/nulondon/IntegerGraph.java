@@ -1,5 +1,6 @@
 package uk.ac.nulondon;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class IntegerGraph {
@@ -59,6 +60,9 @@ public class IntegerGraph {
      */
     public void addNode(int value) {
         //TODO: Your code here.
+//      takes in a value and adds a new entry to the adjacency list for this value.
+        adjListMap.put(value, new LinkedList<>());
+        nodeCount++;
     }
 
     /**
@@ -68,7 +72,12 @@ public class IntegerGraph {
      */
     public List<Integer> getNeighbors(int value) {
         //TODO: Your code here.
-        return new ArrayList<>();
+//      searches through the adjacency list for the given value and returns the list of neighbors.
+        ArrayList<Integer> neighbors = new ArrayList<Integer>();
+        for(Integer node: adjListMap.get(value)){
+            neighbors.add(node);
+        }
+        return neighbors;
     }
 
     /**
@@ -79,6 +88,12 @@ public class IntegerGraph {
      */
     public boolean isConnected(int v1, int v2) {
         //TODO: Your code here.
+//      searches through the adjacency list for the first node and checks if the second node is in the list.
+        for(Integer node: adjListMap.get(v1)){
+            if(node == v2){
+                return true;
+            }
+        }
         return false;
     }
 
@@ -91,7 +106,15 @@ public class IntegerGraph {
      */
     public List<Integer> mutualFriends(int v1, int v2) {
         //TODO: Your code here.
-        return new ArrayList<>();
+//        create new list mutuals
+        List<Integer> mutuals = new ArrayList<>();
+//        loop through the adjacency list of v1 and check if the adjacency list of v2 contains the node
+        for (Integer node: adjListMap.get(v1)){
+            if(adjListMap.get(v2).contains(node)){
+                mutuals.add(node);
+            }
+        }
+        return mutuals;
     }
 
     /**
@@ -102,7 +125,36 @@ public class IntegerGraph {
      */
     public List<IntegerPair> getConnectedNeighbors(int value) {
         //TODO: Your code here.
-        return new ArrayList<>();
+//        create new list of integer pairs
+        List<IntegerPair> connectedNeighbors = new ArrayList<>();
+//        loop through the adjacency list of the given value
+        for(Integer node: adjListMap.get(value)){
+//            loop through the adjacency list of the node
+            for(Integer neighbor: adjListMap.get(node)){
+//                check if the neighbor is in the adjacency list of the given value
+                if(adjListMap.get(value).contains(neighbor)){
+//                    check for duplicates if the matching IntegerPair is not already in the list
+//                    if (0,1) is in the list, (1,0) should not be added and vice versa
+//                    loop through the list of connectedNeighbors
+                    boolean isDuplicate = false;
+                    for(IntegerPair pair: connectedNeighbors){
+//                        check if the pair is already in the list
+                        if((pair.v1 == node && pair.v2 == neighbor) || (pair.v1 == neighbor && pair.v2 == node)){
+                            isDuplicate = true;
+                            break;
+                        }
+                    }
+//                    if the pair is not in the list, add it
+                    if(!isDuplicate){
+                        connectedNeighbors.add(new IntegerPair(node, neighbor));
+                    }
+
+
+                }
+
+            }
+        }
+        return connectedNeighbors;
     }
 
     /**
@@ -135,7 +187,7 @@ public class IntegerGraph {
 
         // getMutualFriends
         // should return [2, 4]
-        List<Integer> mutualFriends = graph.mutualFriends(1, 3);
+        List<Integer> mutualFriends = graph.mutualFriends(2, 4);
         System.out.println("Mutual Friends");
         System.out.println(mutualFriends);
 
@@ -144,5 +196,11 @@ public class IntegerGraph {
         List<IntegerPair> friends = graph.getConnectedNeighbors(1);
         System.out.println("Connected Neighbors");
         System.out.println(friends);
+
+//      Problem test cases
+//        graph.addNode(5);
+//        graph.printGraph();
+//        System.out.println(graph.getNeighbors(1));
+//        System.out.println(graph.isConnected(1, 2));
     }
 }

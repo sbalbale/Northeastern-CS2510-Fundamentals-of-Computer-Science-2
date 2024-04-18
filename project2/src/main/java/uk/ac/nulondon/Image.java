@@ -17,13 +17,7 @@ public class Image {
     /**
      * The file path of the image.
      */
-    public String filePath = "";
-
-    /**
-     * This field stores the output file path for the new image.
-     * By default, it is set to "newImg", meaning the new image will be saved as "newImg" in the project directory.
-     */
-    public String outputFilePath = "newImg";
+    private String filePath = "";
 
     /**
      * The width of the image.
@@ -114,8 +108,6 @@ public class Image {
      * @param outputFilePath The path where the output image will be saved.
      */
     public void exportImage(String outputFilePath) {
-        // Set the output file path for the image
-        this.outputFilePath = outputFilePath;
         // Create a new BufferedImage object with the width and height of the image
         BufferedImage newImage = new BufferedImage(this.width, this.height, BufferedImage.TYPE_INT_RGB);
         try {
@@ -125,8 +117,6 @@ public class Image {
                 Pixel pixel = firstColumn.get(row);
                 // Loop over each column of pixels in the image
                 for (int col = 0; col < this.width; col++) {
-                    // Print the row, column, and color of the current pixel to the console
-                    // System.out.println("Row: " + row + " Col: " + col + " Color: " + pixel);
                     // Set the color of the current pixel in the new image
                     newImage.setRGB(col, row, pixel.getColor().getRGB());
                     // Move to the next pixel in the row
@@ -176,7 +166,7 @@ public class Image {
      * @param pixel The Pixel whose brightness is to be calculated.
      * @return The calculated brightness.
      */
-    public int calculateBrightness(Pixel pixel) {
+    private int calculateBrightness(Pixel pixel) {
         // Get the red component of the pixel's color
         int r = pixel.getColor().getRed();
         // Get the green component of the pixel's color
@@ -220,7 +210,7 @@ public class Image {
      * @param pixelH The pixel below the current pixel.
      * @return The energy of the current pixel, calculated as the square root of the sum of the squares of the horizontal and vertical energy.
      */
-    public int calculateEnergy(Pixel pixelE, Pixel pixelB, Pixel pixelH) {
+    private int calculateEnergy(Pixel pixelE, Pixel pixelB, Pixel pixelH) {
         // Get the x and y coordinates and the brightness of the current pixel
         int x = pixelE.getX();
         int y = pixelE.getY();
@@ -288,7 +278,7 @@ public class Image {
      * @param pixel the pixel for which to calculate the blueness
      * @return the blueness of the pixel
      */
-    public int calculateBlueness(Pixel pixel) {
+    private int calculateBlueness(Pixel pixel) {
         // Get the blue component of the pixel's color
         int blueness = pixel.getColor().getBlue();
         // Return the blue component
@@ -534,7 +524,7 @@ public class Image {
         // Increase the width of the image by 1
         this.width++;
         // Remove the last seam from the removedSeams ArrayList
-        removedSeams.remove(removedSeams.size() - 1);
+        removedSeams.removeLast();
     }
     
     /**
@@ -547,7 +537,7 @@ public class Image {
      *
      * @param pixel The pixel to be inserted. If the pixel is null, the method does nothing.
      */
-    public void insertPixel(Pixel pixel) {
+    private void insertPixel(Pixel pixel) {
         // If the pixel to be inserted is not null
         if (pixel != null) {
             // Get the pixel to the left of the current pixel
@@ -588,7 +578,7 @@ public class Image {
      *
      * @param pixel The pixel to be removed. If the pixel is null, the method does nothing.
      */
-    public void removePixel(Pixel pixel) {
+    private void removePixel(Pixel pixel) {
         // If the pixel to be removed is not null
         if (pixel != null) {
             // Get the pixel to the left of the current pixel
@@ -626,7 +616,7 @@ public class Image {
             return null;
         }
         // Otherwise, return the last seam that was removed from the image
-        return removedSeams.get(removedSeams.size() - 1);
+        return removedSeams.getLast();
     }
 
     /**
@@ -664,7 +654,7 @@ public class Image {
      * @param array the array to search
      * @return the index of the largest value in the array
      */
-    public static int indexOfLargest(int[] array) {
+    private static int indexOfLargest(int[] array) {
         // Initialize the index of the maximum value to 0
         int maxIndex = 0;
         // Loop over each element in the array starting from the second element
@@ -695,7 +685,7 @@ public class Image {
      * @return the index of the smallest value in the array, or -1 if the array is
      *         empty
      */
-    public static int indexOfSmallest(int[] array) {
+    private static int indexOfSmallest(int[] array) {
         // Check if the array is empty
         if (array.length == 0)
             // If it is, return -1
